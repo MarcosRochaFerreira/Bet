@@ -1,67 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COMPRA DE CARROS</title>
-    <link rel="stylesheet" href="estilo1.css">
+    <title>Calculadora Simples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .calculator {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #display {
+            width: 100%;
+            height: 50px;
+            font-size: 1.5em;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="interface">
-            <div class="logo">
-                <a href="#">
-                    <img class="imm" src="bet.jpeg">
-                </a>
-                <h1 color="#ffff"><span>INO (investimento)</span></h1>
-            </div>
-        
-        <nav class="menudesktop">
-            <ul>
-                <li><a href="ven.html">GRUPO VIP</a></li>
-                <li><a href="eco.html">GRUPO FREE</a></li>
-            </ul>
-
-        </nav>
-
-        <div class="contato">
-            <a href="contato.html">
-                <button>contato</button>
-            </a>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <div class="buttons">
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendNumber('1')">1</button>
+            <button onclick="appendNumber('2')">2</button>
+            <button onclick="appendNumber('3')">3</button>
+            <button onclick="appendOperator('+')">+</button>
+            <button onclick="appendNumber('4')">4</button>
+            <button onclick="appendNumber('5')">5</button>
+            <button onclick="appendNumber('6')">6</button>
+            <button onclick="appendOperator('-')">-</button>
+            <button onclick="appendNumber('7')">7</button>
+            <button onclick="appendNumber('8')">8</button>
+            <button onclick="appendNumber('9')">9</button>
+            <button onclick="appendOperator('*')">*</button>
+            <button onclick="appendNumber('0')">0</button>
+            <button onclick="appendOperator('/')">/</button>
+            <button onclick="calculateResult()">=</button>
         </div>
-    </div><!-- sfa-->
-    </header>
+    </div>
 
-    <main>
-        <section class="topodosite">
-            <div class="interface">
-                <div class="flex">
-                    <div class="txttopotopo">
-                        <h1>Realize Seu Sonho<span>.</span></h1>
-                        <p>
-                           Imagina um clube exclusivo onde cada palpite é uma oportunidade de ouro. O Grupo VIP de Apostas surgiu para oferecer uma experiência única para aqueles que desejam ir além nas suas apostas. Com membros selecionados a dedo, este grupo se destaca por sua precisão e estratégia apurada.</p>
-                        <br>
-                        <br>
-                        <div class="contato"> 
-                            <a href="contato.html">
-                                <button>FALE CONOSCO</button>
-                               
-                        </div>
-                    </div>
-                       <div class="imagem-topo">
-                        <img class="imagi" src="WhatsApp Image 2024-11-01 at 11.50.13.jpeg">
+    <script>
+        let display = document.getElementById("display");
 
-                    </div>
+        function appendNumber(num) {
+            display.value += num;
+        }
 
-                </div>                    
-            </div>
-        </section>
-    </main>
-    <footer>
-        
-       
-    </footer>
-    
-    
+        function appendOperator(op) {
+            display.value += " " + op + " ";
+        }
+
+        function clearDisplay() {
+            display.value = "";
+        }
+
+        function calculateResult() {
+            try {
+                display.value = eval(display.value);
+            } catch (error) {
+                display.value = "Erro";
+            }
+        }
+    </script>
 </body>
 </html>
